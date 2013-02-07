@@ -1,0 +1,9 @@
+---
+applications:
+- name: env
+  framework: sinatra
+  runtime: ruby19
+  memory: 64M
+  instances: 1
+  url: env.${target-base}
+  path: .
