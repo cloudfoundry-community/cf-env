@@ -1,5 +1,7 @@
 # Display CF environment variables
 
+<img src="https://raw.github.com/cloudfoundry-community/cf-env/master/docs/images/demo.png" />
+
 A simple sinatra application, once deployed to Cloud Foundry, will echo the Environment and HTTP Request Headers.
 
 Especially useful to learn about service connection details (`$VCAP_SERVICES`) being passed to an application. Create them, and bind them to this running application, and you'll see the nested JSON string that is set in `$VCAP_SERVICES`.
