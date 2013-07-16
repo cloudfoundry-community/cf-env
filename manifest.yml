@@ -1,7 +1,0 @@
----
-applications:
-- name: env
-  memory: 128M
-  instances: 1
-  url: env.${target-base}
-  path: .
