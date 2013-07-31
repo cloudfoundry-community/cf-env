@@ -1,0 +1,8 @@
+---
+applications:
+- name: cfenv
+  memory: 128M
+  instances: 1
+  host: cfenv-${random-word}
+  domain: cfapps.io
+  path: .
