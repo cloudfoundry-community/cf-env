@@ -1,8 +1,7 @@
 ---
 applications:
-- name: cfenv
+- name: cf-env
   memory: 128M
   instances: 1
-  host: cfenv-${random-word}
-  domain: cfapps.io
+  host: env
   path: .
