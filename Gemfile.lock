@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     json_pure (1.8.1)
+    puma (2.9.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
@@ -16,4 +18,5 @@ PLATFORMS
 
 DEPENDENCIES
   json_pure
+  puma
   sinatra
