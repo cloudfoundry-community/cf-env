@@ -3,6 +3,7 @@ require 'sinatra'
 require 'json/pure'
 
 get '/' do
+  puts "Current env keys: #{ENV.keys.sort.inspect}"
   res = "<html><body style=\"margin:0px auto; width:80%; font-family:monospace\">"
   res << "<head><title>Cloud Foundry Environment</title><meta name=\"viewport\" content=\"width=device-width\"></head>"
   res << "<h2>Cloud Foundry Environment</h2>"
@@ -22,4 +23,8 @@ get '/' do
     res << "<tr><td><strong>#{k}</strong></td><td>#{v}</tr>"
   end
   res << "</table></div></body></html>"
+end
+
+get '/some-error' do
+  $stderr.puts "This is an error log"
 end
