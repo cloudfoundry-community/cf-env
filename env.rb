@@ -5,7 +5,11 @@ require 'json/pure'
 get '/' do
   puts "Current env keys: #{ENV.keys.sort.inspect}"
   res = "<html><body style=\"margin:0px auto; width:80%; font-family:monospace\">"
-  res << "<head><title>Cloud Foundry Environment</title><meta name=\"viewport\" content=\"width=device-width\"></head>"
+  res << "<head>"
+  res << "<meta name=\"robots\" content=\"noindex, nofollow\">"
+  res << "<meta name=\"viewport\" content=\"width=device-width\">"
+  res << "<title>Cloud Foundry Environment</title>"
+  res << "</head>"
   res << "<h2>Cloud Foundry Environment</h2>"
   res << "<div><table>"
   ENV.keys.sort.each do |key|
