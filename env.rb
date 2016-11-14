@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'json/pure'
+require 'json'
 
 get '/' do
   puts "Current env keys: #{ENV.keys.sort.inspect}"
@@ -27,4 +27,21 @@ end
 
 get '/some-error' do
   $stderr.puts "This is an error log"
+end
+
+get '/v1/:var' do
+  res = ENV[params['var'] + "\n"]
+end
+
+get '/v1/:var/:json_path' do
+	var = ENV[params['var']]
+	obj = JSON.parse(var)
+	params['json_path'].split(".").each do |k|
+		if obj.is_a?(Array)
+			obj = obj[k.to_i]
+		else
+			obj = obj[k]
+		end
+	end
+	res = obj.to_json + "\n"
 end

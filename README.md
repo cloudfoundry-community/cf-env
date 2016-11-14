@@ -45,3 +45,22 @@ Staging in progress...
 OK
 $ open http://cfenv-dfe2f.cfapps.io
 ```
+
+## Env Var API
+
+To view a specific environment variable, you can use the `/v1/:var` endpoint:
+
+```
+$ curl http://cfenv-dfe2f.cfapps.io/v1/CF_INSTANCE_PORTS
+[{"external":60148,"internal":8080},{"external":60149,"internal":2222}]
+```
+
+For envrionment variables that contain JSON data, you can grab
+individual values out of them as well (values are re-encoded to JSON):
+
+```
+$ curl http://cfenv-dfe2f.cfapps.io/v1/CF_INSTANCE_PORTS/0
+{"external":60148,"internal":8080}
+$ curl http://cfenv-dfe2f.cfapps.io/v1/CF_INSTANCE_PORTS/0/internal
+8080
+```
