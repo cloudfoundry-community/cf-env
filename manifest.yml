@@ -1,3 +1,4 @@
 applications:
 - name: cf-env
   memory: 256M
+  buildpack: ruby_buildpack
