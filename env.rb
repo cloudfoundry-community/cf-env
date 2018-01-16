@@ -3,26 +3,47 @@ require 'sinatra'
 require 'json'
 
 get '/' do
-  puts "Current env keys: #{ENV.keys.sort.inspect}"
-  res = "<html><body style=\"margin:0px auto; width:80%; font-family:monospace\">"
-  res << "<head><title>Cloud Foundry Environment</title><meta name=\"viewport\" content=\"width=device-width\"></head>"
-  res << "<h2>Cloud Foundry Environment</h2>"
-  res << "<div><table>"
-  ENV.keys.sort.each do |key|
-    value = begin
-                "<pre>" + JSON.pretty_generate(JSON.parse(ENV[key])) + "</pre>"
-            rescue
-                ENV[key]
-            end
-    res << "<tr><td><strong>#{key}</strong></td><td>#{value}</tr>"
+  puts "Current ENV keys: #{ENV.keys.sort.inspect}"
+  puts "Current env keys: #{env.keys.sort.inspect}"
+
+  if env['HTTP_USER_AGENT'] =~ /^curl\//
+    res = "Cloud Foundry Environment\n\n"
+    ENV.keys.sort.each do |key|
+      value = begin
+                  JSON.pretty_generate(JSON.parse(ENV[key]))
+              rescue
+                  ENV[key]
+              end
+      res << "#{key}: #{value}\n"
+    end
+
+    res << "\nHTTP Request Headers\n\n"
+    env.inject({}){|acc, (k,v)| acc[$1.downcase] = v if k =~ /^http_(.*)/i; acc}.sort.each do |k,v|
+      res << "#{k}: #{v}\n"
+    end
+  else
+    res = "<html><body style=\"margin:0px auto; width:80%; font-family:monospace\">"
+    res << "<head><title>Cloud Foundry Environment</title><meta name=\"viewport\" content=\"width=device-width\"></head>"
+    res << "<h2>Cloud Foundry Environment</h2>"
+    res << "<div><table>"
+    ENV.keys.sort.each do |key|
+      value = begin
+                  "<pre>" + JSON.pretty_generate(JSON.parse(ENV[key])) + "</pre>"
+              rescue
+                  ENV[key]
+              end
+      res << "<tr><td><strong>#{key}</strong></td><td>#{value}</tr>"
+    end
+    res << "</table></div>"
+    res << "<h2>HTTP Request Headers</h2>"
+    res << "<div><table>"
+    env.inject({}){|acc, (k,v)| acc[$1.downcase] = v if k =~ /^http_(.*)/i; acc}.sort.each do |k,v|
+      res << "<tr><td><strong>#{k}</strong></td><td>#{v}</tr>"
+    end
+    res << "</table></div></body></html>"
   end
-  res << "</table></div>"
-  res << "<h2>HTTP Request Headers</h2>"
-  res << "<div><table>"
-  env.inject({}){|acc, (k,v)| acc[$1.downcase] = v if k =~ /^http_(.*)/i; acc}.sort.each do |k,v|
-    res << "<tr><td><strong>#{k}</strong></td><td>#{v}</tr>"
-  end
-  res << "</table></div></body></html>"
+
+  res
 end
 
 get '/some-error' do
