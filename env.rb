@@ -30,7 +30,7 @@ get '/some-error' do
 end
 
 get '/v1/:var' do
-  res = ENV[params['var'] + "\n"]
+  res = ENV[params['var']] + "\n"
 end
 
 get '/v1/:var/:json_path' do
