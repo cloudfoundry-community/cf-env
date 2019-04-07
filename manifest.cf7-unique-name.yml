@@ -1,0 +1,10 @@
+applications:
+- name: cf-env-unique-name-changeme
+  buildpacks:
+  - ruby_buildpack
+  processes:
+  - type: web
+    instances: 1
+    memory: 256M
+  routes:
+  - route: cf-env-unique-name-changeme.cfapps.io
