@@ -1,0 +1,10 @@
+applications:
+- name: cf-env
+  buildpacks:
+  - ruby_buildpack
+  processes:
+  - type: web
+    instances: 1
+    memory: 256M
+  routes:
+  - route: all-new-route.cfapps.io
