@@ -8,3 +8,8 @@ applications:
     memory: 256M
   routes:
   - route: all-new-route.cfapps.io
+  metadata:
+    labels:
+      potato: idaho
+    annotations:
+      authors: mashed
