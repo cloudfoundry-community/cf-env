@@ -2,4 +2,5 @@ applications:
 - name: cf-env
   memory: 256M
   buildpacks:
+  - https://github.com/cloudfoundry/apt-buildpack
   - ruby_buildpack
