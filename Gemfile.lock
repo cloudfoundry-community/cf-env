@@ -1,18 +1,22 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    json_pure (2.2.0)
-    mustermann (1.0.3)
-    puma (3.12.1)
-    rack (2.0.7)
-    rack-protection (2.0.5)
+    json_pure (2.6.3)
+    mustermann (3.0.0)
+      ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.8)
+    puma (6.1.1)
+      nio4r (~> 2.0)
+    rack (2.2.6.4)
+    rack-protection (3.0.5)
       rack
-    sinatra (2.0.5)
-      mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.5)
+    ruby2_keywords (0.0.5)
+    sinatra (3.0.5)
+      mustermann (~> 3.0)
+      rack (~> 2.2, >= 2.2.4)
+      rack-protection (= 3.0.5)
       tilt (~> 2.0)
-    tilt (2.0.9)
+    tilt (2.1.0)
 
 PLATFORMS
   ruby
@@ -23,4 +27,4 @@ DEPENDENCIES
   sinatra
 
 BUNDLED WITH
-   2.1.4
+   2.4.9
