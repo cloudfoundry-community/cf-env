@@ -20,6 +20,10 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
+
+RUBY VERSION
+   ruby 3.4.7p93
 
 DEPENDENCIES
   json_pure
@@ -27,4 +31,4 @@ DEPENDENCIES
   sinatra
 
 BUNDLED WITH
-   2.4.9
+   2.6.9
